@@ -32,11 +32,9 @@ class App extends React.Component {
             );
     }
 
-
     componentWillUnmount() {
         base.removeBinding(this.ref);
-    }
-
+    };
 
     addFish = fish => {
         // 1. Take a copy of the existing state (don't want to mutate object)
@@ -54,6 +52,15 @@ class App extends React.Component {
         fishes[key] = updatedFish;
         // 3. Set that to state
         this.setState({ fishes: fishes });
+    }
+
+    deleteFish = (key) => {
+        // 1. take a copy of state
+        const fishes = { ...this.state.fishes };
+        // 2. update the state
+        fishes[key] = null;
+        // 3. update state
+        this.setState({ fishes });
     }
 
     loadSampleFishes = () => {
@@ -89,6 +96,7 @@ class App extends React.Component {
                 <Inventory
                     addFish={this.addFish}
                     updateFish={this.updateFish}
+                    deleteFish={this.deleteFish}
                     loadSampleFishes={this.loadSampleFishes}
                     fishes={this.state.fishes}
                 />
