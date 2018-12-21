@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types"; // Dev helper. can also use Typescript and others to verify.
 
 // Stateless functional component (refactored from code below)
 const Header = (props) => (
@@ -15,6 +16,10 @@ const Header = (props) => (
         </h3>
     </header>
 );
+
+Header.propTypes = {
+    tagline: PropTypes.string.isRequired
+};
 
 
 /* REFACTORED ABOVE - since this component is not taking in any changes, it can be simplified and doesn't need the render */

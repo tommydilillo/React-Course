@@ -5,12 +5,19 @@ import Inventory from './Inventory';
 import sampleFishes from '../sample-fishes';
 import Fish from './Fish';
 import base from '../base';
+import PropTypes from "prop-types"; // Dev helper. can also use Typescript and others to verify.
+
 
 class App extends React.Component {
     state = {
         fishes: {},
         order: {}
     };
+
+    static propTypes = {
+        match: PropTypes.object
+    };
+
     componentDidMount() {
         const { params } = this.props.match
         // first reinstate our localStorage
@@ -28,7 +35,7 @@ class App extends React.Component {
         console.log(this.state.order);
         localStorage.setItem
             (this.props.match.params.storeId,
-            JSON.stringify(this.state.order)
+                JSON.stringify(this.state.order)
             );
     }
 
